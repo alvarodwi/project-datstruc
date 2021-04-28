@@ -2,4 +2,7 @@
 #include <iostream>
 
 
-int main() { return 0; }
+int main() {
+    std::cout<<"tesbang"<<std::endl;
+     return 0; 
+}
