@@ -65,7 +65,7 @@ int main() {
     }
   } while (menu != 5);
 
-  //destruktoor queue
+  //destruktor queue
   //destruktor stack
   return 0;
 }
@@ -138,7 +138,19 @@ void menu_2() {
 }
 
 void menu_3() {
-  // implementasikan
+  system("pause");
+  system("cls");
+  std::cout << "[APLIKASI ANTRIAN KLINIK]\n"
+            << "\n[Cek Antrian]\n"
+            << "Jumlah antrian : \n\n";
+  if(queue::isEmpty(antrian)){
+    info_message("Antrian kosong, belum ada pasien yang terdaftar");
+  } else {
+    //print header
+    //print pasien
+    system("pause");
+    system("cls");
+  }
 }
 
 void menu_4() {
@@ -167,7 +179,13 @@ void menu_4() {
 }
 
 void menu_5() {
-  // implementasikan
+  if(queue::isEmpty(antrian)){
+    std::cout << "\nSelamat beristirahat...\n";
+    system("pause");
+    system("cls");
+  } else {
+    error_message("Masih ada pasien dalam antrian.\nSelesaikan dulu antriannya!");
+  }
 }
 
 void error_message(std::string s) {
