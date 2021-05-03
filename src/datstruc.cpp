@@ -6,6 +6,19 @@ struct Pasien {
   int status;
 };
 
+std::string printStatus(Pasien p) {
+  switch (p.status) {
+  case 1:
+    return "Gawat Darurat";
+  case 2:
+    return "Darurat Tidak Gawat";
+  case 3:
+    return "Tidak Darurat Tidak Gawat";
+  default:
+    return NULL;
+  }
+}
+
 struct Node {
   Pasien data;
   Node *next;
@@ -84,6 +97,30 @@ pNode pop(Queue q) {
     target->next = nullptr;
   }
   return target;
+}
+
+pNode findByNama(Queue q, std::string sNama) {
+  pNode pHelp = q.head;
+  while (pHelp->next != nullptr) {
+    if (pHelp->data.nama == sNama) {
+      return pHelp;
+    }
+  }
+
+  return nullptr;
+}
+
+int checkIndex(Queue q, pNode target) {
+  int index = 0;
+  pNode pHelp = q.head;
+  while (pHelp->next != nullptr) {
+    index++;
+    if (pHelp == target) {
+      return index;
+    }
+  }
+
+  return -1;
 }
 
 } // namespace queue

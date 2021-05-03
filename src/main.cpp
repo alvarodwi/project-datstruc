@@ -1,17 +1,20 @@
 #include "datstruc.cpp"
 #include <iostream>
 
-void menu_1 ();
-void menu_2 ();
-void menu_3 ();
-void menu_4 ();
-void menu_5 ();
+queue::Queue antrian;
+stack::Stack pelayanan;
+
+void menu_1();
+void menu_2();
+void menu_3();
+void menu_4();
+void menu_5();
 void error_message(std::string s);
 
 int main() {
   int menu;
-  do{
-    std::cout << "[APLIKASI ANTRIAN KLINIK]\n" 
+  do {
+    std::cout << "[APLIKASI ANTRIAN KLINIK]\n"
               << "\nPasien yang dilayani  : -\n";
     /*
     ambil nilai stack
@@ -21,7 +24,7 @@ int main() {
       print pasien yg dilayani
     }
     */
-    std::cout<<"Jumlah antrian             : \n\n";
+    std::cout << "Jumlah antrian             : \n\n";
     // hitung antrian falam pasien
     std::cout << "[MENU]\n\n"
               << "1. Tambah Pasien\n"
@@ -31,12 +34,11 @@ int main() {
               << "5. Exit\n"
               << "\nPilihan > ";
     std::cin >> menu;
-    switch (menu)
-    {
+    switch (menu) {
     case 1:
       menu_1();
       break;
-      
+
     case 2:
       // implementasi dari menu_2
       break;
@@ -44,7 +46,7 @@ int main() {
     case 3:
       // implementasi dari menu_3
       break;
-    
+
     case 4:
       // implementasi dari menu_4
       break;
@@ -62,72 +64,91 @@ int main() {
   return 0;
 }
 
-void menu_1 (){
+void menu_1() {
   system("pause");
   system("cls");
   int status; // hanya untuk testing, nanti digunakan status dari queue nya
-  do{
+  do {
     std::cout << "[APLIKASI ANTRIAN KLINIK]\n"
               << "\n[Tambah Pasien]\n";
 
-    std::cout << "\n//INFO\n"
-              << "Pengelompokkan status pasien :\n"
-              << "1. Gawat Darurat (eg. kecelakaan)\n"
-              << "2. Darurat Tidak Gawat (eg. luka bakar, demam tinggi)\n"
-              << "3. Tidak Darurat Tiadk Gawat (wg. batuk/pilek, luka ringan)\n";
-    
-    std::cout<<"\n[Input]\n"
-            <<"Status > "; 
+    std::cout
+        << "\n//INFO\n"
+        << "Pengelompokkan status pasien :\n"
+        << "1. Gawat Darurat (eg. kecelakaan)\n"
+        << "2. Darurat Tidak Gawat (eg. luka bakar, demam tinggi)\n"
+        << "3. Tidak Darurat Tiadk Gawat (wg. batuk/pilek, luka ringan)\n";
+
+    std::cout << "\n[Input]\n"
+              << "Status > ";
     std::cin >> status; // testing input status pasien
-    
-    switch (status)
-    {
+
+    switch (status) {
     case 1:
     case 2:
     case 3:
       break;
-    
+
     default:
       error_message("Pilihan tidak ada dalam menu");
       goto refresh1;
       break;
-    } 
+    }
   } while (status <= 1 && status >= 3);
 
-  std::cout << "Nama > \n\n"; //input nama
+  std::cout << "Nama > \n\n"; // input nama
 
   /*
   if(input nama == nama pasien lain){
-    error_message("Nama pasien harus berbeda, gunakan nama lain untuk menambahkan kedalam antrian.");
-  } else {
-    system("pause");
-    system("cls");
+    error_message("Nama pasien harus berbeda, gunakan nama lain untuk
+  menambahkan kedalam antrian."); } else { system("pause"); system("cls");
   }
   */
   system("pause");
   system("cls");
-  refresh1:
+refresh1:
   std::cout << '\n';
 }
 
-void menu_2 (){
-  //implementasikan
+void menu_2() {
+  // implementasikan
 }
 
-void menu_3 (){
-  //implementasikan
+void menu_3() {
+  // implementasikan
 }
 
-void menu_4 (){
-  //implementasikan
+void menu_4() {
+  system("pause");
+  system("cls");
+  int flag;
+  do {
+    std::string sNama;
+    std::cout << "[APLIKASI ANTRIAN KLINIK]\n"
+              << "\n[Cari Pasien]\n";
+
+    std::cout << "Nama\t>";
+    std::cin >> sNama;
+
+    auto it = queue::findByNama(antrian, sNama);
+    if (it) {
+      int index = queue::checkIndex(antrian, it);
+      std::cout << "//INFO\n"
+                << "Pasien ditemukan dalam antrian.\n";
+      std::cout << "Nama\t: " << it->data.nama << "\n"
+                << "Status\t: " << printStatus(it->data) << "\n"
+                << "Antrian ";
+    }
+
+  } while (flag != 0);
 }
 
-void menu_5 (){
-  //implementasikan
+void menu_5() {
+  // implementasikan
 }
 
-void error_message(std::string s){
-  std::cout << "//ERROR\n"; 
+void error_message(std::string s) {
+  std::cout << "//ERROR\n";
   std::cout << s << '\n';
   system("pause");
   system("cls");
