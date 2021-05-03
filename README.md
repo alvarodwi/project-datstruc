@@ -21,6 +21,8 @@ Sistem antrian sederhana yang berjalan di komputer sebetulnya dapat dibuat mengg
 
 Makalah ini dimaksudkan untuk membahas mengenai pembuatan aplikasi sistem antrian menggunakan topik struktur data dengan bahasan stack, queue, serta linked list.
 
+---
+
 ## Tujuan dan Manfaat
 
 Tujuan dari proposal ini adalah :
@@ -30,6 +32,8 @@ Tujuan dari proposal ini adalah :
 Manfaat dari proposal ini adalah :
 - Sebagai sarana eksplorasi topik struktur data dalam implementasinya untuk kasus nyata.
 - Mengeluarkan output aplikasi yang dapat dipakai dalam use-case sistem antrian di klinik.
+
+---
 
 ## Penjelasan Aplikasi
 
@@ -42,10 +46,14 @@ Aplikasi yang akan dirancang merupakan aplikasi sistem antrian sederhana yang ak
 - Menghapus pasien dari antrian
 - Mendaftarkan ulang pasien ke dalam antrian
 
+---
+
 ## Gambar Rancangan Antar Muka
 
 Link Desain Secara Lengkap : 
 https://www.figma.com/file/3xFHwHpOHMRDg7fQSlDAIn/DatStruc
+
+---
 
 ## Rencana Pengerjaan Projek
 
@@ -85,6 +93,18 @@ File dikerjakan ada 2, yaitu :
     - Rasyid
 
         Struktur data stack
+
+## Metode Pengerjaan
+
+Arsitektur untuk menu utama dan struktur data dibuat terlebih dahulu karena merupakan bagian yang paling dasar. Setelah semua bagian dasar tersebut selesai dibuat, kemudian dilanjutkan dengan pengerjaan menu-menu program yang pembagiannya ada di poin 3.1
+
+## Koordinasi
+
+Koordinasi kami lakukan melalui 2 platform yaitu discord dan line. Discord digunakan untuk koordinasi secara langsung saat bekerja kelompok dan line digunakan untuk arsip link projek aplikasi dan kami menggunakan fitur line schedule sebagai reminder untuk tanggal-tanggal penting dalam projek ini.
+
+Untuk pengerjaan source code digunakan github sebagai version control system (vcs). Pengerjaan dikerjakan di branch main. Berikut link github :
+https://github.com/alvarodwi/project-datstruc
+
 
 ## Lisensi
 
