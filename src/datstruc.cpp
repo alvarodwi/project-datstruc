@@ -50,7 +50,7 @@ bool isEmpty(Stack s){
   return s==nullptr;
 }
 
-pNode push(Stack s, pNode newNode)
+void push(Stack s, pNode newNode)
 {
   if(isEmpty(s))
   {
@@ -74,6 +74,7 @@ pNode pop(Stack s){
     s = s->next;
     s->next = nullptr;
   }
+  return target;
 }
 
 } // namespace stack
