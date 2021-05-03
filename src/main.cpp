@@ -143,8 +143,12 @@ void menu_4() {
   } while (flag != 0);
 }
 
+<<<<<<< Updated upstream
 void menu_5() {
   // implementasikan
+=======
+void menu_5 (){
+>>>>>>> Stashed changes
 }
 
 void error_message(std::string s) {
