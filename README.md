@@ -107,7 +107,7 @@ Untuk pengerjaan source code digunakan github sebagai version control system (vc
 
 ## Catatan
 
-File proposal bisa diakses [disini](wiki/Prposoal_Datstruc.pdf)
+File proposal bisa diakses [disini](wiki/Proposal_Datstruc.pdf)
 
 ## Lisensi
 
