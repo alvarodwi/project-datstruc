@@ -97,7 +97,7 @@ bool isEmpty(Queue q) { return q.head == nullptr && q.tail == nullptr; }
 
 Pasien front(Queue q) { return q.head->data; }
 
-void push(Queue q, pNode newNode) {
+void push(Queue& q, pNode newNode) {
   if (isEmpty(q)) {
     q.head = newNode;
     q.tail = newNode;

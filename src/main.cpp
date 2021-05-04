@@ -1,5 +1,6 @@
 #include "datstruc.cpp"
 #include <iostream>
+#include <iomanip>
 
 queue::Queue antrian;
 stack::Stack pelayanan;
@@ -146,7 +147,9 @@ void menu_3() {
   if(queue::isEmpty(antrian)){
     info_message("Antrian kosong, belum ada pasien yang terdaftar");
   } else {
-    //print header
+    std::cout << std::setw(2) << std::setfill(' ') << std::left << "No" << "| "
+              << std::setw(20) << std::setfill(' ') << std::left << "Nama" << "| "
+              << std::setw(30) << std::setfill(' ') << std::left << "Status" << "| " <<'\n';
     //print pasien
     system("pause");
     system("cls");
