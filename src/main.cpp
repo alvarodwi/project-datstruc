@@ -9,7 +9,7 @@ void menu_1();
 void menu_2();
 void menu_3();
 void menu_4();
-void menu_5();
+int menu_5();
 void error_message(std::string s);
 void info_message(std::string s);
 
@@ -57,7 +57,7 @@ int main() {
       break;
 
     case 5:
-      menu_5();
+      menu = menu_5();
       break;
 
     default:
@@ -181,13 +181,15 @@ void menu_4() {
   } while (flag != 0);
 }
 
-void menu_5() {
+int menu_5() {
   if(queue::isEmpty(antrian)){
     std::cout << "\nSelamat beristirahat...\n";
     system("pause");
     system("cls");
+    return 5;
   } else {
     error_message("Masih ada pasien dalam antrian.\nSelesaikan dulu antriannya!");
+    return 0;
   }
 }
 

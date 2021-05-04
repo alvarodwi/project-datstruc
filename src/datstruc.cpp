@@ -50,7 +50,7 @@ bool isEmpty(Stack s){
   return s==nullptr;
 }
 
-void push(Stack s, pNode newNode)
+void push(Stack& s, pNode newNode)
 {
   if(isEmpty(s))
   {
@@ -62,7 +62,7 @@ void push(Stack s, pNode newNode)
   }
 }
 
-pNode pop(Stack s){
+pNode pop(Stack& s){
   pNode target;
   if(isEmpty(s)){
     target = nullptr;
@@ -124,7 +124,7 @@ void push(Queue& q, pNode newNode) {
   }
 }
 
-pNode pop(Queue q) {
+pNode pop(Queue& q) {
   pNode target;
   if (isEmpty(q)) {
     target = nullptr;
