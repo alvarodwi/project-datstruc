@@ -22,22 +22,23 @@ int main()
   do
   {
     std::cout << "[APLIKASI ANTRIAN KLINIK]\n"
-              << "\nPasien yang dilayani\t: -\n";
-    /*
-    ambil nilai stack
-    if(stack kosong){
+              << "\nPasien yang dilayani\t: ";
+    if (stack::isEmpty(pelayanan))
+    {
       std::cout << "-\n";
-    } else {
-      print pasien yg dilayani
     }
-    */
-    std::cout << "Jumlah antrian             : \n\n";
-    // hitung antrian falam pasien
+    else
+    {
+      Pasien top = stack::peek(pelayanan);
+      std::cout << top.nama << '\n';
+    }
+    std::cout << "Jumlah antrian             : ";
+    std::cout << queue::size(antrian) << "\n\n";
     std::cout << "[MENU]\n\n"
               << "1. Tambah Pasien\n"
               << "2. Panggil Pasien\n"
               << "3. Cek Antrian\n"
-              << "4. Cek Antrian\n"
+              << "4. Cari Pasien\n"
               << "5. Exit\n"
               << "\nPilihan > ";
     std::cin >> menu;
@@ -162,13 +163,22 @@ void menu_3()
   }
   else
   {
+    int count = 1;
     std::cout << std::setw(2) << std::setfill(' ') << std::left << "No"
               << "| "
               << std::setw(20) << std::setfill(' ') << std::left << "Nama"
               << "| "
               << std::setw(30) << std::setfill(' ') << std::left << "Status"
               << "| " << '\n';
-    //print pasien
+    queue::traversal(antrian, [&count](Pasien p) {
+      std::cout << std::setw(2) << std::setfill(' ') << std::left << count
+                << "| "
+                << std::setw(20) << std::setfill(' ') << std::left << p.nama
+                << "| "
+                << std::setw(30) << std::setfill(' ') << std::left << printStatus(p)
+                << "| " << '\n';
+      count++;
+    });
     system("pause");
     system("cls");
   }
@@ -215,6 +225,7 @@ int menu_5()
   {
     error_message(
         "Masih ada pasien dalam antrian.\nSelesaikan dulu antriannya!");
+    return 0;
   }
 }
 

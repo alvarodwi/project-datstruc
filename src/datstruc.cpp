@@ -209,7 +209,7 @@ namespace queue
   void traversal(Queue q, std::function<void(const Pasien &)> func)
   {
     pNode pHelp = q.head;
-    while (pHelp->next != nullptr)
+    while (pHelp != nullptr)
     {
       func(pHelp->data);
       pHelp = pHelp->next;
