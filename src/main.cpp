@@ -13,14 +13,16 @@ int menu_5();
 void error_message(std::string s);
 void info_message(std::string s);
 
-int main() {
-  antrian = queue::newQueue();
+int main()
+{
+  antrian = queue::createQueue();
   pelayanan = stack::createStack();
 
   int menu;
-  do {
+  do
+  {
     std::cout << "[APLIKASI ANTRIAN KLINIK]\n"
-              << "\nPasien yang dilayani  : -\n";
+              << "\nPasien yang dilayani\t: -\n";
     /*
     ambil nilai stack
     if(stack kosong){
@@ -39,7 +41,8 @@ int main() {
               << "5. Exit\n"
               << "\nPilihan > ";
     std::cin >> menu;
-    switch (menu) {
+    switch (menu)
+    {
     case 1:
       menu_1();
       break;
@@ -66,18 +69,20 @@ int main() {
     }
   } while (menu != 5);
 
-  //destruktor queue
-  //destruktor stack
+  // destruktor queue
+  // destruktor stack
   return 0;
 }
 
-void menu_1() {
+void menu_1()
+{
   system("pause");
   system("cls");
-  int status; 
+  int status;
   bool nFlag = false;
   std::string nama;
-  do {
+  do
+  {
     std::cout << "[APLIKASI ANTRIAN KLINIK]\n"
               << "\n[Tambah Pasien]\n";
 
@@ -90,9 +95,10 @@ void menu_1() {
 
     std::cout << "\n[Input]\n"
               << "Status > ";
-    std::cin >> status; 
+    std::cin >> status;
 
-    switch (status) {
+    switch (status)
+    {
     case 1:
     case 2:
     case 3:
@@ -105,62 +111,76 @@ void menu_1() {
     }
   } while (status <= 1 && status >= 3);
 
-  
-  do{
+  do
+  {
     std::cout << "Nama > ";
     std::cin >> nama;
     nFlag = true;
 
-  //   auto it = queue::findByNama(antrian,nama);
-  //   if(!it){
-  //     std::cout << "Gak Ketemu\n";
-  //     error_message("Nama pasien harus berbeda, gunakan nama lain untuk menambahkan kedalam antrian.");
-  //     goto refresh1;
-  //   }else{
-  //     nFlag = true;
-  //     std::cout << "Ketemu\n";
-  //   }
-  }while(!nFlag);
+    //   auto it = queue::findByNama(antrian,nama);
+    //   if(!it){
+    //     std::cout << "Gak Ketemu\n";
+    //     error_message("Nama pasien harus berbeda, gunakan nama lain untuk
+    //     menambahkan kedalam antrian."); goto refresh1;
+    //   }else{
+    //     nFlag = true;
+    //     std::cout << "Ketemu\n";
+    //   }
+  } while (!nFlag);
 
-  queue::push(antrian,createNode(Pasien{nama,status}));
+  queue::push(antrian, createNode(Pasien{nama, status}));
 
   info_message("Data pasien berhasil dimasukkan ke dalam antrian.");
-  refresh1:
+refresh1:
   std::cout << "";
 }
 
-void menu_2() {
-  if(queue::isEmpty(antrian)){
+void menu_2()
+{
+  if (queue::isEmpty(antrian))
+  {
     error_message("Antrian kosong, belum ada pasien yang terdaftar");
-  } else {
+  }
+  else
+  {
     pNode panggil = queue::pop(antrian);
-    info_message("Memanggil pasien dengan nama"+ panggil->data.nama +"\nUpdate antrian....");
+    info_message("Memanggil pasien dengan nama" + panggil->data.nama +
+                 "\nUpdate antrian....");
   }
 }
 
-void menu_3() {
+void menu_3()
+{
   system("pause");
   system("cls");
   std::cout << "[APLIKASI ANTRIAN KLINIK]\n"
             << "\n[Cek Antrian]\n"
             << "Jumlah antrian : \n\n";
-  if(queue::isEmpty(antrian)){
+  if (queue::isEmpty(antrian))
+  {
     info_message("Antrian kosong, belum ada pasien yang terdaftar");
-  } else {
-    std::cout << std::setw(2) << std::setfill(' ') << std::left << "No" << "| "
-              << std::setw(20) << std::setfill(' ') << std::left << "Nama" << "| "
-              << std::setw(30) << std::setfill(' ') << std::left << "Status" << "| " <<'\n';
+  }
+  else
+  {
+    std::cout << std::setw(2) << std::setfill(' ') << std::left << "No"
+              << "| "
+              << std::setw(20) << std::setfill(' ') << std::left << "Nama"
+              << "| "
+              << std::setw(30) << std::setfill(' ') << std::left << "Status"
+              << "| " << '\n';
     //print pasien
     system("pause");
     system("cls");
   }
 }
 
-void menu_4() {
+void menu_4()
+{
   system("pause");
   system("cls");
   int flag;
-  do {
+  do
+  {
     std::string sNama;
     std::cout << "[APLIKASI ANTRIAN KLINIK]\n"
               << "\n[Cari Pasien]\n";
@@ -169,7 +189,8 @@ void menu_4() {
     std::cin >> sNama;
 
     auto it = queue::findByNama(antrian, sNama);
-    if (it) {
+    if (it)
+    {
       int index = queue::checkIndex(antrian, it);
       std::cout << "//INFO\n"
                 << "Pasien ditemukan dalam antrian.\n";
@@ -181,26 +202,32 @@ void menu_4() {
   } while (flag != 0);
 }
 
-int menu_5() {
-  if(queue::isEmpty(antrian)){
+int menu_5()
+{
+  if (queue::isEmpty(antrian))
+  {
     std::cout << "\nSelamat beristirahat...\n";
     system("pause");
     system("cls");
     return 5;
-  } else {
-    error_message("Masih ada pasien dalam antrian.\nSelesaikan dulu antriannya!");
-    return 0;
+  }
+  else
+  {
+    error_message(
+        "Masih ada pasien dalam antrian.\nSelesaikan dulu antriannya!");
   }
 }
 
-void error_message(std::string s) {
+void error_message(std::string s)
+{
   std::cout << "\n//ERROR\n";
   std::cout << s << '\n';
   system("pause");
   system("cls");
 }
 
-void info_message(std::string s){
+void info_message(std::string s)
+{
   std::cout << "\n//INFO\n";
   std::cout << s << '\n';
   system("pause");
