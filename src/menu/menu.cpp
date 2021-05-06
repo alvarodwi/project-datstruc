@@ -1,7 +1,4 @@
-#pragma once
-
 #include "menu.hpp"
-#include "../datstruc.cpp"
 
 void error_message(std::string s)
 {
