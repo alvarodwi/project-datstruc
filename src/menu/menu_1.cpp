@@ -2,8 +2,7 @@
 
 void menu_1(queue::Queue &q)
 {
-    system("pause");
-    system("cls");
+    refreshUI();
     int status;
     bool nFlag = false;
     std::string nama;

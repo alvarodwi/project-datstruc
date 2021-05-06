@@ -2,8 +2,7 @@
 
 void menu_4(queue::Queue q)
 {
-    system("pause");
-    system("cls");
+    refreshUI();
     int flag;
     do
     {

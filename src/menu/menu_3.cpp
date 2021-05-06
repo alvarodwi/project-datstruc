@@ -2,8 +2,7 @@
 
 void menu_3(queue::Queue q)
 {
-      system("pause");
-      system("cls");
+      refreshUI();
       std::cout << "[APLIKASI ANTRIAN KLINIK]\n"
                 << "\n[Cek Antrian]\n"
                 << "Jumlah antrian : " << queue::size(q) << "\n\n";
@@ -29,7 +28,6 @@ void menu_3(queue::Queue q)
                             << "| " << '\n';
                   count++;
             });
-            system("pause");
-            system("cls");
+            refreshUI();
       }
 }
