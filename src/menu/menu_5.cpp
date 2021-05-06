@@ -5,7 +5,7 @@ int menu_5(queue::Queue &q)
     if (queue::isEmpty(q))
     {
         std::cout << "\nSelamat beristirahat...\n";
-        refreshUI();
+        refresh_ui();
         return 5;
     }
     else

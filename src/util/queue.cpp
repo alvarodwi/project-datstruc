@@ -90,12 +90,13 @@ namespace queue
     pNode findByNama(Queue q, std::string sNama)
     {
         pNode pHelp = q.head;
-        while (pHelp->next != nullptr)
+        while (pHelp != nullptr)
         {
             if (pHelp->data.nama == sNama)
             {
                 return pHelp;
             }
+            pHelp = pHelp->next;
         }
 
         return nullptr;
@@ -103,15 +104,16 @@ namespace queue
 
     int checkIndex(Queue q, pNode target)
     {
-        int index = 0;
+        int index = 1;
         pNode pHelp = q.head;
-        while (pHelp->next != nullptr)
+        while (pHelp != nullptr)
         {
-            index++;
-            if (pHelp == target)
+            if (pHelp->data.nama == target->data.nama)
             {
                 return index;
             }
+            pHelp = pHelp->next;
+            index++;
         }
 
         return -1;

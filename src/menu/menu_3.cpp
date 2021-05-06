@@ -2,13 +2,13 @@
 
 void menu_3(queue::Queue q)
 {
-      refreshUI();
+      refresh_ui();
       std::cout << "[APLIKASI ANTRIAN KLINIK]\n"
                 << "\n[Cek Antrian]\n"
                 << "Jumlah antrian : " << queue::size(q) << "\n\n";
       if (queue::isEmpty(q))
       {
-            info_message("Antrian kosong, belum ada pasien yang terdaftar");
+            info_message("Antrian kosong, belum ada pasien yang terdaftar.");
       }
       else
       {
@@ -28,6 +28,6 @@ void menu_3(queue::Queue q)
                             << "| " << '\n';
                   count++;
             });
-            refreshUI();
+            refresh_ui();
       }
 }
