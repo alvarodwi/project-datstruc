@@ -50,4 +50,11 @@ namespace stack
         return target;
     }
 
+    void clearStack(Stack &s){
+        while(!isEmpty(s)){
+            pNode pDelete = pop(s);
+            delete pDelete;
+        }
+    }
+
 } // namespace stack

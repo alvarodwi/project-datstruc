@@ -64,7 +64,6 @@ int main()
     }
   } while (menu != 5);
 
-  // destruktor queue
-  // destruktor stack
+  stack::clearStack(pelayanan);
   return 0;
 }
