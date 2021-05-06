@@ -32,7 +32,7 @@ int main()
       Pasien top = stack::peek(pelayanan);
       std::cout << top.nama << '\n';
     }
-    std::cout << "Jumlah antrian             : ";
+    std::cout << "Jumlah antrian\t\t: ";
     std::cout << queue::size(antrian) << "\n\n";
     std::cout << "[MENU]\n\n"
               << "1. Tambah Pasien\n"
@@ -145,6 +145,7 @@ void menu_2()
   else
   {
     pNode panggil = queue::pop(antrian);
+    stack::push(pelayanan, panggil);
     info_message("Memanggil pasien dengan nama" + panggil->data.nama +
                  "\nUpdate antrian....");
   }
