@@ -1,3 +1,5 @@
+#pragma once
+
 #include "../datstruc.cpp"
 #include <iomanip>
 #include <iostream>
