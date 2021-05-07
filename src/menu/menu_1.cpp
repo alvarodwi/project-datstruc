@@ -32,6 +32,7 @@ void menu_1(queue::Queue &q)
 
         default:
             error_message("Pilihan tidak ada dalam menu");
+            goto refresh1;
             break;
         }
 
