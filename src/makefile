@@ -11,7 +11,7 @@ OBJS	:= main.o $(PROB_OBJS)
 SOURCE	:= main.cpp $(PROB_SRCS)
 HEADER	:= $(PROB_HDRS)
 
-DEPS	:= $(patsubst %.o, %.d, $(OBJS) $(OBJS_TEST))
+DEPS	:= $(patsubst %.o, %.d, $(OBJS))
 
 CXX	:= g++
 FLAGS	:= -g -c -Wall -Wpedantic -Wextra -std=c++14 -MMD $(extra_flags)
@@ -28,7 +28,7 @@ else
 	CLEAN_CMD := rm -f *.o *.d $(OUT)
 endif
 
-all: $(OUT) $(OUT_TEST)
+all: $(OUT)
 
 $(OUT): $(OBJS)
 	$(CXX) $(LFLAGS) $(OBJS) -o $(OUT)

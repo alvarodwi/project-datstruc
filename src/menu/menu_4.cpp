@@ -2,7 +2,7 @@
 
 void menu_4(queue::Queue q)
 {
-    refreshUI();
+    refresh_ui();
     int flag;
     do
     {
@@ -10,7 +10,7 @@ void menu_4(queue::Queue q)
         std::cout << "[APLIKASI ANTRIAN KLINIK]\n"
                   << "\n[Cari Pasien]\n";
 
-        std::cout << "Nama\t>";
+        std::cout << "Nama\t> ";
         std::cin >> sNama;
 
         auto it = queue::findByNama(q, sNama);
@@ -21,8 +21,15 @@ void menu_4(queue::Queue q)
                       << "Pasien ditemukan dalam antrian.\n";
             std::cout << "Nama\t: " << it->data.nama << "\n"
                       << "Status\t: " << printStatus(it->data) << "\n"
-                      << "Antrian ";
+                      << "Antrian\t: ke-" << index;
         }
+        else
+        {
+            std::cout << "//INFO\n"
+                      << "Pasien tidak ditemukan dalam antrian.\n";
+        }
+        flag = 0;
+        refresh_ui();
 
     } while (flag != 0);
 }

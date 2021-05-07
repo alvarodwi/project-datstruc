@@ -2,7 +2,7 @@
 
 void menu_1(queue::Queue &q)
 {
-    refreshUI();
+    refresh_ui();
     int status;
     bool flag = false;
     std::string nama;
@@ -17,7 +17,7 @@ void menu_1(queue::Queue &q)
             << "Pengelompokkan status pasien :\n"
             << "1. Gawat Darurat (eg. kecelakaan)\n"
             << "2. Darurat Tidak Gawat (eg. luka bakar, demam tinggi)\n"
-            << "3. Tidak Darurat Tiadk Gawat (wg. batuk/pilek, luka ringan)\n";
+            << "3. Tidak Darurat Tidak Gawat (wg. batuk/pilek, luka ringan)\n";
 
         std::cout << "\n[Input]\n"
                   << "Status > ";
@@ -32,7 +32,6 @@ void menu_1(queue::Queue &q)
 
         default:
             error_message("Pilihan tidak ada dalam menu");
-            goto refresh1;
             break;
         }
 

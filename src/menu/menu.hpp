@@ -1,9 +1,9 @@
 #pragma once
-
-#include "../datstruc.cpp"
-#include "../util/util.cpp"
+#include "../util/stack.cpp"
+#include "../util/queue.cpp"
 #include <iomanip>
 #include <iostream>
 
+void refresh_ui();
 void error_message(std::string s);
 void info_message(std::string s);
