@@ -3,7 +3,7 @@
 void menu_4(queue::Queue q)
 {
     refresh_ui();
-    int flag;
+    bool flag = false;
     do
     {
         std::string sNama;
@@ -16,20 +16,26 @@ void menu_4(queue::Queue q)
         auto it = queue::findByNama(q, sNama);
         if (it)
         {
+            flag = true;
             int index = queue::checkIndex(q, it);
-            std::cout << "//INFO\n"
+            std::cout << "\n//INFO\n"
                       << "Pasien ditemukan dalam antrian.\n";
             std::cout << "Nama\t: " << it->data.nama << "\n"
                       << "Status\t: " << printStatus(it->data) << "\n"
-                      << "Antrian\t: ke-" << index;
+                      << "Antrian\t: ke-" << index << "\n\n";
         }
         else
         {
-            std::cout << "//INFO\n"
-                      << "Pasien tidak ditemukan dalam antrian.\n";
-        }
-        flag = 0;
-        refresh_ui();
+            int pilihan;
+            std::cout << "\n//INFO\n"
+                      << "Pasien tidak ditemukan dalam antrian.\n\n"
+                      << "  1. Cari Ulang\n"
+                      << "  2. Kembali\n\n";
 
-    } while (flag != 0);
+            std::cout << "Pilihan > ";
+            std::cin >> pilihan;
+            flag = (pilihan == 1) ? false : true;
+        }
+        refresh_ui();
+    } while (!flag);
 }
