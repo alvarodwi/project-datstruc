@@ -4,8 +4,9 @@ void menu_1(queue::Queue &q)
 {
     refreshUI();
     int status;
-    bool nFlag = false;
+    bool flag = false;
     std::string nama;
+    pNode it;
     do
     {
         std::cout << "[APLIKASI ANTRIAN KLINIK]\n"
@@ -34,28 +35,22 @@ void menu_1(queue::Queue &q)
             goto refresh1;
             break;
         }
-    } while (status <= 1 && status >= 3);
 
-    do
-    {
         std::cout << "Nama > ";
         std::cin >> nama;
-        nFlag = true;
 
-        //   auto it = queue::findByNama(q,nama);
-        //   if(!it){
-        //     std::cout << "Gak Ketemu\n";
-        //     error_message("Nama pasien harus berbeda, gunakan nama lain untuk
-        //     menambahkan kedalam antrian."); goto refresh1;
-        //   }else{
-        //     nFlag = true;
-        //     std::cout << "Ketemu\n";
-        //   }
-    } while (!nFlag);
-
-    queue::push(q, createNode(Pasien{nama, status}));
-
-    info_message("Data pasien berhasil dimasukkan ke dalam antrian.");
-refresh1:
-    std::cout << "";
+        it = queue::findByNama(q, nama);
+        if (it != nullptr)
+        {
+            error_message("Nama pasien harus berbeda, gunakan nama lain untuk menambahkan kedalam antrian.");
+        }
+        else
+        {
+            flag = true;
+            queue::push(q, createNode(Pasien{nama, status}));
+            info_message("Data pasien berhasil dimasukkan ke dalam antrian.");
+        }
+    refresh1:
+        std::cout << "";
+    } while (!flag);
 }

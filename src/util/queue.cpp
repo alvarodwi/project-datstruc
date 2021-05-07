@@ -90,12 +90,13 @@ namespace queue
     pNode findByNama(Queue q, std::string sNama)
     {
         pNode pHelp = q.head;
-        while (pHelp->next != nullptr)
+        while (pHelp != nullptr)
         {
             if (pHelp->data.nama == sNama)
             {
                 return pHelp;
             }
+            pHelp = pHelp -> next;
         }
 
         return nullptr;
