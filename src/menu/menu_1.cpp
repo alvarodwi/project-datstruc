@@ -32,7 +32,7 @@ void menu_1(queue::Queue &q)
 
         default:
             error_message("Pilihan tidak ada dalam menu");
-            goto refresh1;
+            goto refresh;
             break;
         }
 
@@ -50,7 +50,7 @@ void menu_1(queue::Queue &q)
             queue::push(q, createNode(Pasien{nama, status}));
             info_message("Data pasien berhasil dimasukkan ke dalam antrian.");
         }
-    refresh1:
+    refresh:
         std::cout << "";
     } while (!flag);
 }
