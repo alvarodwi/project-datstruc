@@ -31,7 +31,13 @@ void menu_1(queue::Queue &q)
             break;
 
         default:
-            error_message("Pilihan tidak ada dalam menu");
+            error_message("Status tidak boleh diluar interval 1-3");
+            if (std::cin.fail())
+            {
+                std::cin.clear();
+                ignore_line();
+                std::cout << "Input tidak boleh berupa string atau karakter!\n\n";
+            }
             goto refresh;
             break;
         }

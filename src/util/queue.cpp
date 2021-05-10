@@ -1,5 +1,6 @@
 #include "../model/pasien.cpp"
 #include <functional>
+#include <cstdio>
 
 namespace queue
 {
@@ -68,15 +69,10 @@ namespace queue
                 pHelp->next = newNode;
                 q.tail = newNode;
             }
-            else if (newNode->data.status < pHelp->data.status)
+            else
             {
                 pRev->next = newNode;
                 newNode->next = pHelp;
-            }
-            else
-            {
-                pHelp->next = newNode;
-                newNode->next = pHelp->next;
             }
         }
         q.size++;
@@ -120,15 +116,22 @@ namespace queue
         return nullptr;
     }
 
-    pNode eraseByNama(Queue &q, std::string sNama)
+    void eraseByNama(Queue &q, std::string sNama)
     {
         pNode pHelp = q.head, pRev = nullptr;
         pNode target = nullptr;
 
         if (q.head != nullptr && q.head->data.nama == sNama)
         {
-            target = pHelp;
-            q.head = pHelp->next;
+            target = q.head;
+            if (q.head->next != nullptr)
+            {
+                q.head = q.head->next;
+            }
+            else
+            {
+                q.head = nullptr;
+            }
             q.size--;
         }
         else
@@ -140,14 +143,14 @@ namespace queue
             }
 
             if (pHelp == nullptr)
-                return nullptr;
+                return;
 
             target = pHelp;
             pRev->next = pHelp->next;
             q.size--;
         }
 
-        return target;
+        delete target;
     }
 
     int checkIndex(Queue q, pNode target)

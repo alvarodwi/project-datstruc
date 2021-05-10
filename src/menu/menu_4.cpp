@@ -1,6 +1,6 @@
 #include "menu.hpp"
 
-void menu_4(queue::Queue q)
+void menu_4(queue::Queue &q)
 {
     refresh_ui();
     bool flag = false;
@@ -29,6 +29,7 @@ void menu_4(queue::Queue q)
                       << "  3. Kembali\n\n";
 
             std::cout << "Pilihan > ";
+            ignore_line();
             std::cin >> pilihan;
 
             switch (pilihan)
@@ -64,6 +65,12 @@ void menu_4(queue::Queue q)
 
                     default:
                         error_message("Status tidak boleh diluar interval 1-3");
+                        if (std::cin.fail())
+                        {
+                            std::cin.clear();
+                            ignore_line();
+                            std::cout << "Input tidak boleh berupa string atau karakter!\n\n";
+                        }
                         goto refresh;
                         break;
                     }
@@ -74,10 +81,10 @@ void menu_4(queue::Queue q)
             case 2:
                 flag = true;
                 queue::eraseByNama(q, sNama);
-                info_message("Pasien dengan nama " + sNama + " telah dihapus dar antrian");
+                info_message("Pasien dengan nama " + sNama + " telah dihapus dari antrian");
                 goto refresh;
                 break;
-            
+
             case 3:
                 flag = true;
                 break;

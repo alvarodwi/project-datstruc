@@ -8,6 +8,11 @@ void refresh_ui()
     std::cout << "\033[2J\033[1;1H";
 }
 
+void ignore_line()
+{
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+}
+
 void error_message(std::string s)
 {
     std::cout << "\n//ERROR\n";
