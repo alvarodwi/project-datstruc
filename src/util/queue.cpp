@@ -45,7 +45,7 @@ namespace queue
                 pHelp = pHelp->next;
             }
 
-            if (pHelp == q.head && newNode->data.status < pHelp->data.status)
+            if (pHelp == q.head && newNode->data.status <= pHelp->data.status)
             {
                 newNode->next = pHelp;
                 q.head = newNode;
@@ -100,6 +100,36 @@ namespace queue
         }
 
         return nullptr;
+    }
+
+    pNode eraseByNama(Queue &q, std::string sNama)
+    {
+        pNode pHelp = q.head, pRev = nullptr;
+        pNode target = nullptr;
+
+        if (q.head != nullptr && q.head->data.nama == sNama)
+        {
+            target = pHelp;
+            q.head = pHelp->next;
+            q.size--;
+        }
+        else
+        {
+            while (pHelp != nullptr && pHelp->data.nama != sNama)
+            {
+                pRev = pHelp;
+                pHelp = pHelp->next;
+            }
+
+            if (pHelp == nullptr)
+                return nullptr;
+
+            target = pHelp;
+            pRev->next = pHelp->next;
+            q.size--;
+        }
+
+        return target;
     }
 
     int checkIndex(Queue q, pNode target)
