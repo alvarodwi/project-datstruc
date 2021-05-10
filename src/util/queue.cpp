@@ -33,6 +33,19 @@ namespace queue
             q.head = newNode;
             q.tail = newNode;
         }
+        else if (q.head->next == nullptr)
+        {
+            if (q.head->data.status > newNode->data.status)
+            {
+                newNode->next = q.head;
+                q.head = newNode;
+            }
+            else
+            {
+                q.head->next = newNode;
+                q.tail = newNode;
+            }
+        }
         else
         {
             pNode pRev = nullptr;
@@ -45,7 +58,7 @@ namespace queue
                 pHelp = pHelp->next;
             }
 
-            if (pHelp == q.head && newNode->data.status <= pHelp->data.status)
+            if (pHelp == q.head && newNode->data.status < pHelp->data.status)
             {
                 newNode->next = pHelp;
                 q.head = newNode;
@@ -55,10 +68,15 @@ namespace queue
                 pHelp->next = newNode;
                 q.tail = newNode;
             }
-            else
+            else if (newNode->data.status < pHelp->data.status)
             {
                 pRev->next = newNode;
                 newNode->next = pHelp;
+            }
+            else
+            {
+                pHelp->next = newNode;
+                newNode->next = pHelp->next;
             }
         }
         q.size++;
