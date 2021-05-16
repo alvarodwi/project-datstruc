@@ -25,6 +25,7 @@ namespace stack
         else
         {
             newNode->next = s;
+            s->prev = newNode;
             s = newNode;
         }
     }
@@ -45,13 +46,16 @@ namespace stack
         {
             target = s;
             s = s->next;
-            s->next = nullptr;
+            s->prev = nullptr;
+            target->next = nullptr;
         }
         return target;
     }
 
-    void clearStack(Stack &s){
-        while(!isEmpty(s)){
+    void clearStack(Stack &s)
+    {
+        while (!isEmpty(s))
+        {
             pNode pDelete = pop(s);
             delete pDelete;
         }

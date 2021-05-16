@@ -1,78 +1,79 @@
 #include "../model/pasien.cpp"
 #include <functional>
-#include <cstdio>
 
 namespace queue
 {
 
     struct Queue
     {
-        pNode head;
-        pNode tail;
+        pNode list;
         int size;
     };
 
     Queue createQueue()
     {
         Queue q;
-        q.head = nullptr;
-        q.tail = nullptr;
+        q.list = nullptr;
         q.size = 0;
         return q;
     }
 
     int size(Queue q) { return q.size; }
 
-    bool isEmpty(Queue q) { return (q.head == nullptr && q.tail == nullptr); }
+    bool isEmpty(Queue q) { return q.list == nullptr; }
 
-    Pasien front(Queue q) { return q.head->data; }
+    Pasien front(Queue q) { return q.list->data; }
 
     void push(Queue &q, pNode newNode)
     {
         if (isEmpty(q))
         {
-            q.head = newNode;
-            q.tail = newNode;
+            q.list = newNode;
         }
-        else if (q.head->next == nullptr)
+        else if (q.list->next == nullptr)
         {
-            if (q.head->data.status > newNode->data.status)
+            if (q.list->data.status > newNode->data.status)
             {
-                newNode->next = q.head;
-                q.head = newNode;
+                newNode->next = q.list;
+                q.list->prev = newNode;
+                q.list = newNode;
             }
             else
             {
-                q.head->next = newNode;
-                q.tail = newNode;
+                q.list->next = newNode;
+                newNode->prev = q.list;
             }
         }
         else
         {
-            pNode pRev = nullptr;
-            pNode pHelp = q.head;
+            pNode pHelp = q.list;
             while (newNode->data.status >= pHelp->data.status)
             {
                 if (pHelp->next == nullptr)
                     break;
-                pRev = pHelp;
                 pHelp = pHelp->next;
             }
 
-            if (pHelp == q.head && newNode->data.status < pHelp->data.status)
+            if (pHelp == q.list && newNode->data.status < pHelp->data.status)
             {
-                newNode->next = pHelp;
-                q.head = newNode;
-            }
-            else if (pHelp == q.tail && newNode->data.status > pHelp->data.status)
-            {
-                pHelp->next = newNode;
-                q.tail = newNode;
+                newNode->next = q.list;
+                q.list->prev = newNode;
+                q.list = newNode;
             }
             else
             {
-                pRev->next = newNode;
-                newNode->next = pHelp;
+                if (newNode->data.status < pHelp->data.status)
+                {
+                    pHelp->prev->next = newNode;
+                    newNode->prev = pHelp->prev;
+                    newNode->next = pHelp;
+                    pHelp->prev = newNode;
+                }
+                else
+                {
+                    pHelp->next = newNode;
+                    newNode->prev = pHelp;
+                }
             }
         }
         q.size++;
@@ -85,16 +86,16 @@ namespace queue
         {
             target = nullptr;
         }
-        else if (q.head->next == nullptr)
+        else if (q.list->next == nullptr)
         {
-            target = q.head;
-            q.head = nullptr;
-            q.tail = nullptr;
+            target = q.list;
+            q.list = nullptr;
         }
         else
         {
-            target = q.head;
-            q.head = q.head->next;
+            target = q.list;
+            q.list = q.list->next;
+            q.list->prev = nullptr;
             target->next = nullptr;
         }
         q.size--;
@@ -103,7 +104,7 @@ namespace queue
 
     pNode findByNama(Queue q, std::string sNama)
     {
-        pNode pHelp = q.head;
+        pNode pHelp = q.list;
         while (pHelp != nullptr)
         {
             if (pHelp->data.nama == sNama)
@@ -118,19 +119,19 @@ namespace queue
 
     void eraseByNama(Queue &q, std::string sNama)
     {
-        pNode pHelp = q.head, pRev = nullptr;
+        pNode pHelp = q.list, pRev = nullptr;
         pNode target = nullptr;
 
-        if (q.head != nullptr && q.head->data.nama == sNama)
+        if (q.list != nullptr && q.list->data.nama == sNama)
         {
-            target = q.head;
-            if (q.head->next != nullptr)
+            target = q.list;
+            if (q.list->next != nullptr)
             {
-                q.head = q.head->next;
+                q.list = q.list->next;
             }
             else
             {
-                q.head = nullptr;
+                q.list = nullptr;
             }
             q.size--;
         }
@@ -156,7 +157,7 @@ namespace queue
     int checkIndex(Queue q, pNode target)
     {
         int index = 1;
-        pNode pHelp = q.head;
+        pNode pHelp = q.list;
         while (pHelp != nullptr)
         {
             if (pHelp->data.nama == target->data.nama)
@@ -172,7 +173,7 @@ namespace queue
 
     void traversal(Queue q, std::function<void(const Pasien &)> func)
     {
-        pNode pHelp = q.head;
+        pNode pHelp = q.list;
         while (pHelp != nullptr)
         {
             func(pHelp->data);

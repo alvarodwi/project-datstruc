@@ -26,6 +26,7 @@ struct Node
 {
     Pasien data;
     Node *next;
+    Node *prev;
 };
 typedef Node *pNode;
 
@@ -34,5 +35,6 @@ pNode createNode(Pasien data)
     pNode newNode = new Node;
     newNode->data = data;
     newNode->next = nullptr;
+    newNode->prev = nullptr;
     return newNode;
 }
