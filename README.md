@@ -99,6 +99,8 @@ File dikerjakan dibagi menjadi 3 kategori :
 
   Berisi struct yang digunakan dan linked list
 
+  Ricnian pembagian :
+
   - alvaro
 
     pasien.cpp (struct & linked list)
