@@ -79,13 +79,13 @@ File dikerjakan dibagi menjadi 3 kategori :
 
 - Menu
 
-  Berisi main menu dan opsi operasi yang bisa dipilih, terdiri dari 7 file
+  Berisi opsi operasi yang bisa dipilih, terdiri dari 7 file
 
   Rincian pembagian :
 
   - Ariq
 
-    menu.cpp (void berisi error & info message), menu_1.cpp (main menu & tambah pasien), menu.hpp (menhubungkan utility dengan menu)
+    menu.cpp (void berisi error & info message), menu_1.cpp (menu tambah pasien), menu.hpp (menhubungkan utility dengan menu)
 
   - Alvaro
 
@@ -105,7 +105,7 @@ File dikerjakan dibagi menjadi 3 kategori :
 
     pasien.cpp (struct & linked list)
 
-
+Selain itu ada main.cpp yang tidak masuk kedalam 3 kategori tersebut yang berisi menu utama dari aplikasi antrian (ariq)
 
 ## Metode Pengerjaan
 
