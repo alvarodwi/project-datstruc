@@ -61,39 +61,49 @@ https://www.figma.com/file/3xFHwHpOHMRDg7fQSlDAIn/DatStruc
 ### Pembagian Tugas
 
 Pembagian tugas dilakukan sebagai berikut :
-File dikerjakan ada 2, yaitu :
+File dikerjakan dibagi menjadi 3 kategori :
 
-- Main.cpp
+- Utility
 
-  Berisi hal yang di output dan business logic dari program
-
-  Pembagian dilakukan berdasarkan menu dengan rincian :
-
-  - Ariq
-
-    Arsitektur main.cpp, struktur menu, serta Tambah
-
-  - Alvaro
-
-    Cari antrian
-
-  - Rasyid
-
-    Panggil pasien serta Cek antrian
-
-- Datstruc.cpp
-
-  Berisi struktur data yang dipakai di dalam program
+  Berisi struktur data yang digunakan dalam pembuatan aplikasi, terdiri dari 2 file
 
   Rincian pembagian :
 
   - Alvaro
 
-    Arsitektur datstruc.cpp serta struktur data queue
+    queue.cpp (struktur data untuk queue)
 
   - Rasyid
 
-    Struktur data stack
+    stack.cpp
+
+- Menu
+
+  Berisi main menu dan opsi operasi yang bisa dipilih, terdiri dari 7 file
+
+  Rincian pembagian :
+
+  - Ariq
+
+    menu.cpp (void berisi error & info message), menu_1.cpp (main menu & tambah pasien), menu.hpp (menhubungkan utility dengan menu)
+
+  - Alvaro
+
+    menu_4.cpp (cari pasien berdasarkan nama), menu_5.cpp (exit aplikasi)
+
+  - Rasyid
+
+    menu_2.cpp (panggil pasien), menu_3.cpp (cek status dan jumlah antrian pasien)
+
+- Model
+
+  Berisi struct yang digunakan dan linked list
+
+  - alvaro
+
+    pasien.cpp (struct & linked list)
+
+
 
 ## Metode Pengerjaan
 
